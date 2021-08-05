@@ -1,0 +1,37 @@
+<div class="container pt-5 mb-5">
+  <div *ngIf="!isLoading && post">
+    <!-- post part -->
+    <img class="postImg" src="../../../assets/postImg.png" alt="" width="125">
+    <h2>{{ post.title }}</h2>
+    <p class="mb-4 t-right" *ngIf="author">by {{ author }}</p>
+    <p class="text-body">{{ post.body }}</p>
+    <!-- post part -->
+
+    <!-- comments part -->
+    <div *ngIf="comments">
+      <h4 class="mt-5 mb-3 pl-3">Comments</h4>
+      <div class="row row-flex" *ngFor="let comment of comments">
+        <div class="first-box">
+          <ngx-avatar name="{{ comment.author }}"></ngx-avatar>
+        </div>
+        <div class="pt-3 second-box">
+          <h5 class="one-line">{{ comment.author }}</h5>
+          <p class="grey-text">{{ comment.body }}</p>
+        </div>
+      </div>
+    </div>
+    <!-- comments part -->
+
+    <!-- add comment part -->
+    <h4 class="mt-5 mb-3">Add a comment</h4>
+    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" [(ngModel)]="newComment"></textarea>
+    <button type="button" class="btn btn-primary m-3 px-4 f-right" (click)="addComment()" [disabled]="newComment.length > 0 ? false : true">Send</button>
+    <!-- add comment part -->
+
+
+  </div>
+
+  <div class="lds-ring" *ngIf="isLoading">
+    <div></div><div></div><div></div><div></div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+#login {
+  width: 360px;
+  margin: auto;
+  margin-top: calc(50vh - 230px);
+  box-shadow: 0 3px 10px #0003;
+  padding: 2.5rem;
+  background-color: #fff;
+  border-radius: 10px;
+  h3 {
+    text-align: center;
+  }
+  p {
+    color: red;
+  }
+  label {
+    color: #777;
+  }
+}

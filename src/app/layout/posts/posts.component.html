@@ -1,0 +1,28 @@
+<div class="container pt-5" id="posts">
+
+  <h2 class="mb-4">Posts</h2>
+
+  <div *ngIf="!isLoading" class="mb-5">
+    <div class="row mb-5 row-flex" *ngFor="let post of posts" style="cursor: pointer" routerLink="/posts/{{ post.id }}">
+      <div class="first-box">
+        <img src="../../../assets/postImg.png" alt="">
+      </div>
+      <div class="pt-2 second-box">
+        <h4 class="mb-3 one-line">
+          <span>{{ post.title }} &nbsp;</span>
+          <span style="font-size: 2.5rem;">|</span>
+          <span *ngIf="post.author">&nbsp; {{ post.author }}</span>
+        </h4>
+        <h5 class="one-line grey-text">{{ post.body }}</h5>
+      </div>
+    </div>
+
+    <ngb-pagination class="d-flex justify-content-center" (click)="changePage()" [collectionSize]="100" [(page)]="page" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+
+  </div>
+
+  <div class="lds-ring" *ngIf="isLoading">
+    <div></div><div></div><div></div><div></div>
+  </div>
+
+</div>
